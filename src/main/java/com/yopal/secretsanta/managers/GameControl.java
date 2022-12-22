@@ -35,16 +35,16 @@ public class GameControl {
     public static void startGame(GameTypes type) {
         switch (type) {
             case FINDPRESENTS:
-                FindThePresents game1 = new FindThePresents(santa);
+                new FindThePresents(santa);
                 break;
             case SNOWBALLBATTLE:
-                SnowballBattle game2 = new SnowballBattle(santa);
+                new SnowballBattle(santa);
                 break;
             case ELFOFTHEMONTH:
-                ElfOfTheMonth game3 = new ElfOfTheMonth(santa);
+                new ElfOfTheMonth(santa);
                 break;
             case PARKOUR:
-                Parkour game4 = new Parkour(santa);
+                new Parkour(santa);
                 break;
         }
 

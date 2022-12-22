@@ -24,7 +24,7 @@ public final class Secretsanta extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        ConfigManager.removeAllPlayers();
+        ConfigManager.removeAllPlayers(this);
 
     }
 }

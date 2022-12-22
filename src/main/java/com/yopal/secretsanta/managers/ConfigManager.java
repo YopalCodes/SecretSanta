@@ -93,10 +93,12 @@ public class ConfigManager {
         );
     }
 
-    public static void removeAllPlayers() {
+    public static void removeAllPlayers(Secretsanta santa) {
         if (config.contains("players")) {
             config.set("players", null);
         }
+
+        santa.saveConfig();
     }
 
 
