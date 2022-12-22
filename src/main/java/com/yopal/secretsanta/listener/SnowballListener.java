@@ -42,7 +42,7 @@ public class SnowballListener implements Listener {
 
         // Constantly check if player is sneaking over snowblocks
         Bukkit.getScheduler().runTaskTimer(santa, ()->{
-            for (Player player : ConfigManager.getAllPlayers()) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
                 if (checkWorld(player.getWorld())) {
                     Location playerLoc = player.getLocation();
                     if (playerLoc.subtract(0, 1, 0).getBlock().getType().equals(Material.SNOW_BLOCK) && player.isSneaking()) {

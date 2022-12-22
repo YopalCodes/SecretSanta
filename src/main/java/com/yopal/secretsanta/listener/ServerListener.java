@@ -31,15 +31,12 @@ public class ServerListener implements Listener {
         player.teleport(ConfigManager.returnLocation("StartLocation"));
 
         PlayerInteract.sendMessage(player, "Hello! Welcome to the first Bread Gang Secret Santa! Ho ho ho!");
+
+        // Play the song first then add the player, so it doesn't play twice when they join
+        MusicManager.playSong(player);
         ConfigManager.addPlayer(santa, player);
 
-        MusicManager.playSong(e.getPlayer());
         GameScoreboard.setScoreboard(e.getPlayer(), "None");
-    }
-
-    @EventHandler
-    public void playerOnLeave(PlayerQuitEvent e) {
-        ConfigManager.removePlayer(santa, e.getPlayer());
     }
 
 

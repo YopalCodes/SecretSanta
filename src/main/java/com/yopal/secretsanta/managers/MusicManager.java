@@ -31,6 +31,10 @@ public class MusicManager {
     }
 
     public static void playSong(Player player) {
+        if (ConfigManager.getAllPlayers().contains(player.getUniqueId())) {
+            return;
+        }
+
         RadioSongPlayer rsp = new RadioSongPlayer(MusicManager.playlist);
         rsp.addPlayer(player);
         rsp.setRandom(true);

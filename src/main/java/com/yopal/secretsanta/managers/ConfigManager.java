@@ -29,8 +29,11 @@ public class ConfigManager {
 
             // player already has joined
             List<String> list = config.getStringList("players");
-            list.add(player.getUniqueId() + "");
-            config.set("players", list);
+            if (!list.contains(player.getUniqueId() + "")) {
+                list.add(player.getUniqueId() + "");
+                config.set("players", list);
+            }
+
         } else {
 
             // first player joins
@@ -43,17 +46,10 @@ public class ConfigManager {
 
     }
 
-    public static void removePlayer(Secretsanta santa, Player player) {
-        List<String> list = config.getStringList("players");
-        list.remove(player.getUniqueId() + "");
-        config.set("players", list);
-        santa.saveConfig();
-    }
-
-    public static ArrayList<Player> getAllPlayers() {
-        ArrayList<Player> players = new ArrayList<>();
+    public static ArrayList<UUID> getAllPlayers() {
+        ArrayList<UUID> players = new ArrayList<>();
         for (String playerUUID : config.getStringList("players")) {
-            players.add(Bukkit.getPlayer(UUID.fromString(playerUUID)));
+            players.add(UUID.fromString(playerUUID));
         }
         return players;
     }
@@ -95,6 +91,12 @@ public class ConfigManager {
                 config.getDouble("Locations." + path + ".y"),
                 config.getDouble("Locations." + path + ".z")
         );
+    }
+
+    public static void removeAllPlayers() {
+        if (config.contains("players")) {
+            config.set("players", null);
+        }
     }
 
 

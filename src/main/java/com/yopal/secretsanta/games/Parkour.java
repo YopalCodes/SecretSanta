@@ -44,7 +44,7 @@ public class Parkour {
 
         PlayerInteract.sendToAll("Have fun y'all! You guys deserve the day off.", UtilTypes.MESSAGE);
 
-        for (Player player : ConfigManager.getAllPlayers()) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
 
             for (PotionEffect potionEffect : player.getActivePotionEffects()) {
                 player.removePotionEffect(potionEffect.getType());
@@ -116,7 +116,7 @@ public class Parkour {
             }
 
             if (countdownSeconds.get() == 5) {
-                for (Player playerGiveEffect : ConfigManager.getAllPlayers()) {
+                for (Player playerGiveEffect : Bukkit.getOnlinePlayers()) {
                     playerGiveEffect.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 200, 1, true, true));
                     playerGiveEffect.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 100, 1, true, true));
                 }

@@ -16,6 +16,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SantaCommand implements CommandExecutor {
@@ -50,7 +51,7 @@ public class SantaCommand implements CommandExecutor {
                             }
 
                             if (countdownSeconds.get() == 5) {
-                                for (Player playerGiveEffect : ConfigManager.getAllPlayers()) {
+                                for (Player playerGiveEffect : Bukkit.getOnlinePlayers()) {
                                     playerGiveEffect.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 200, 1, true, true));
                                     playerGiveEffect.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 100,  1, true, true));
                                 }

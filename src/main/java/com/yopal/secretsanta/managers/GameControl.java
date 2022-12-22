@@ -70,7 +70,7 @@ public class GameControl {
 
     public static void endGame() {
 
-        for (Player player : ConfigManager.getAllPlayers()) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
             player.teleport(ConfigManager.returnLocation("EndLocation"));
         }
 

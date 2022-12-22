@@ -33,7 +33,7 @@ public class SnowballBattle {
 
         Bukkit.getPluginManager().registerEvents(new SnowballListener(santa, this), santa);
 
-        for (Player player : ConfigManager.getAllPlayers()) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
 
             for (PotionEffect potionEffect : player.getActivePotionEffects()) {
                 player.removePotionEffect(potionEffect.getType());
@@ -57,7 +57,7 @@ public class SnowballBattle {
         this.location = location;
 
 
-        for (Player player : ConfigManager.getAllPlayers()) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
             player.teleport(ConfigManager.returnLocation("SnowballBattleLocation"));
         }
 
@@ -119,7 +119,7 @@ public class SnowballBattle {
             }
 
             if (countdownSeconds.get() == 5) {
-                for (Player playerGiveEffect : ConfigManager.getAllPlayers()) {
+                for (Player playerGiveEffect : Bukkit.getOnlinePlayers()) {
                     playerGiveEffect.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 200, 1, true, true));
                     playerGiveEffect.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 100, 1, true, true));
                 }

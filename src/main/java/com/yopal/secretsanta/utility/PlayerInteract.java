@@ -2,6 +2,7 @@ package com.yopal.secretsanta.utility;
 
 import com.yopal.secretsanta.enums.UtilTypes;
 import com.yopal.secretsanta.managers.ConfigManager;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -18,11 +19,11 @@ public class PlayerInteract {
     public static void sendToAll(String message, String secondMesssage, UtilTypes type) {
         switch (type) {
             case TITLE:
-                for (Player player : ConfigManager.getAllPlayers()) {
+                for (Player player : Bukkit.getOnlinePlayers()) {
                     sendTitle(player, message);
                 }
             case TITLEWITHSUB:
-                for (Player player : ConfigManager.getAllPlayers()) {
+                for (Player player : Bukkit.getOnlinePlayers()) {
                     sendTitle(player, message, secondMesssage);
                 }
         }
@@ -33,7 +34,7 @@ public class PlayerInteract {
     public static void sendToAll(String message, UtilTypes type) {
         switch (type) {
             case MESSAGE:
-                for (Player player : ConfigManager.getAllPlayers()) {
+                for (Player player : Bukkit.getOnlinePlayers()) {
                     sendMessage(player, message);
                 }
         }

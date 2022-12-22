@@ -62,7 +62,7 @@ public class GameScoreboard {
 
         Random random = new Random();
         Player randomPlayer = Bukkit.getPlayer(uuids.get(random.nextInt(uuids.size())));
-        for (Player gamePlayer : ConfigManager.getAllPlayers()) {
+        for (Player gamePlayer : Bukkit.getOnlinePlayers()) {
             gamePlayer.getScoreboard().getTeam("inLead").setPrefix(ChatColor.YELLOW + randomPlayer.getName() + ": ");
             gamePlayer.getScoreboard().getTeam("inLead").setSuffix(ChatColor.GRAY + score.get(randomPlayer.getUniqueId()).toString());
         }

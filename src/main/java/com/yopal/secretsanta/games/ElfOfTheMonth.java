@@ -51,7 +51,7 @@ public class ElfOfTheMonth {
 
         PlayerInteract.sendToAll("We need to start making new presents for next Christmas. You've been given your tools: a pickaxe, a shovel, an axe, your handy-dandy crafter, and a grappling hook for the Floating Mines. Remember that you can smelt by shifting right clicking with an ore by using your magic powers. Left-click with the present made in order to turn it in and receive your next task. Be the elf of the month, good luck everyone!", UtilTypes.MESSAGE);
 
-        for (Player player : ConfigManager.getAllPlayers()) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
 
             for (PotionEffect potionEffect : player.getActivePotionEffects()) {
                 player.removePotionEffect(potionEffect.getType());
@@ -145,7 +145,7 @@ public class ElfOfTheMonth {
             }
 
             if (countdownSeconds.get() == 5) {
-                for (Player playerGiveEffect : ConfigManager.getAllPlayers()) {
+                for (Player playerGiveEffect : Bukkit.getOnlinePlayers()) {
                     playerGiveEffect.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 200, 1, true, true));
                     playerGiveEffect.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 100,  1, true, true));
                 }
