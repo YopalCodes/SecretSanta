@@ -1,0 +1,7 @@
+name: BreadGangSecretSanta
+version: '${project.version}'
+main: com.yopal.secretsanta.Secretsanta
+api-version: 1.19
+depend: [NoteBlockAPI]
+commands:
+  secretsanta:

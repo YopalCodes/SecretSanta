@@ -1,0 +1,149 @@
+Locations:
+  StartLocation:
+    world: "ChristmasCity"
+    x: 6506
+    y: 88
+    z: 9482
+  FindPresentLocation:
+    world: "Twistedxmas"
+    x: 12
+    y: 33
+    z: 471
+  SnowballBattleLocation:
+    world: "PVPArena"
+    x: 52
+    y: 81
+    z: 16
+  ElfOfTheMonthLocation:
+    world: "SantaWorkshop"
+    x: -40
+    y: 6
+    z: -502
+  ParkourLocation:
+    world: "Parkour"
+    x: 2
+    y: 76
+    z: 334
+  EndLocation:
+    world: "ChristmasCity"
+    x: 6393
+    y: 133
+    z: 9430
+SnowballLocations:
+  Spawn1:
+    x: 53
+    y: 82
+    z: 55
+  Spawn2:
+    x: 12
+    y: 81
+    z: 17
+  Spawn3:
+    x: 57
+    y: 80
+    z: -37
+  Spawn4:
+    x: 104
+    y: 83
+    z: 39
+ParkourLocations:
+  CheckPoint1:
+    x: -33
+    y: 89
+    z: 164
+  CheckPoint2:
+    x: -65
+    y: 90
+    z: 163
+  CheckPoint3:
+    x: -92
+    y: 88
+    z: 159
+  CheckPoint4:
+    x: -91
+    y: 88
+    z: 127
+  CheckPoint5:
+    x: -71
+    y: 88
+    z: 95
+  CheckPoint6:
+    x: -80
+    y: 90
+    z: 63
+  CheckPoint7:
+    x: -64
+    y: 90
+    z: 52
+  CheckPoint8:
+    x: -32
+    y: 85
+    z: 56
+  CheckPoint9:
+    x: 0
+    y: 87
+    z: 45
+  CheckPoint10:
+    x: 32
+    y: 86
+    z: 57
+  CheckPoint11:
+    x: 57
+    y: 90
+    z: 64
+  CheckPoint12:
+    x: 44
+    y: 88
+    z: 96
+  CheckPoint13:
+    x: 51
+    y: 90
+    z: 128
+  CheckPoint14:
+    x: 48
+    y: 88
+    z: 160
+  CheckPoint15:
+    x: 31
+    y: 89
+    z: 186
+  CheckPoint16:
+    x: 4
+    y: 90
+    z: 159
+  CheckPoint17:
+    x: -1
+    y: 89
+    z: 133
+  CheckPoint18:
+    x: -33
+    y: 89
+    z: 143
+  CheckPoint19:
+    x: -59
+    y: 86
+    z: 127
+  CheckPoint20:
+    x: -51
+    y: 88
+    z: 95
+  CheckPoint21:
+    x: -32
+    y: 90
+    z: 91
+  CheckPoint22:
+    x: 0
+    y: 80
+    z: 92
+  CheckPoint23:
+    x: 27
+    y: 77
+    z: 100
+  CheckPoint24:
+    x: -1
+    y: 90
+    z: 111
+  CheckPoint25:
+    x: -12
+    y: 77
+    z: 112
