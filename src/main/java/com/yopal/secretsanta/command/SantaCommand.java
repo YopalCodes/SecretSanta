@@ -16,6 +16,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -32,14 +33,14 @@ public class SantaCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
 
-            if (!sender.hasPermission("santa.admin")) {
-                PlayerInteract.sendMessage(player, "You don't have permission! Don't worry, at least you're not on the naughty list ;)");
-                return false;
-            }
 
             if (args.length == 1) {
                 switch (args[0]) {
                     case "start":
+                        if (!sender.hasPermission("santa.admin")) {
+                            PlayerInteract.sendMessage(player, "You don't have permission! Don't worry, at least you're not on the naughty list ;)");
+                            return false;
+                        }
 
                         PlayerInteract.sendToAll("Ho ho ho! Our secret santa will begin soon!", UtilTypes.MESSAGE);
 
@@ -66,6 +67,24 @@ public class SantaCommand implements CommandExecutor {
                             countdownSeconds.getAndDecrement();
                         }, 0, 20);
                         break;
+                    case "score":
+                        HashMap<UUID, Integer> score = GameControl.getScore();
+                        GameTypes gameType = GameControl.getCurrentGame();
+
+                        if (score == null || score.isEmpty()) {
+                            PlayerInteract.sendToAll("There's no score available!", UtilTypes.MESSAGE);
+                            return false;
+                        }
+                        String prefix = ChatColor.GREEN + "[" + ChatColor.RED + "Santa" + ChatColor.GREEN  + "] " + ChatColor.GRAY;
+
+                        StringBuilder message = new StringBuilder(ChatColor.GOLD.toString() + ChatColor.BOLD + "CURRENT GAME: " + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + gameType.toString() + "\n" + prefix + ChatColor.GOLD + ChatColor.BOLD + "POINTS:\n");
+
+                        for (UUID uuid : score.keySet()) {
+                            message.append(prefix + ChatColor.YELLOW + Bukkit.getPlayer(uuid).getName() + ": " + ChatColor.GRAY + score.get(uuid) + "\n");
+                        }
+
+                        PlayerInteract.sendToAll(message.toString(), UtilTypes.MESSAGE);
+
                 }
             }
 

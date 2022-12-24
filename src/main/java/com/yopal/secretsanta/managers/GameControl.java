@@ -26,6 +26,11 @@ public class GameControl {
 
     private static Secretsanta santa;
     private static BukkitTask task;
+    private static FindThePresents presents;
+    private static SnowballBattle battle;
+    private static ElfOfTheMonth elfOfTheMonth;
+    private static Parkour parkour;
+    private static GameTypes gameType;
 
     public static void setupGame(Secretsanta santa) {
         GameControl.santa = santa;
@@ -35,16 +40,20 @@ public class GameControl {
     public static void startGame(GameTypes type) {
         switch (type) {
             case FINDPRESENTS:
-                new FindThePresents(santa);
+                GameControl.presents = new FindThePresents(santa);
+                GameControl.gameType = GameTypes.FINDPRESENTS;
                 break;
             case SNOWBALLBATTLE:
-                new SnowballBattle(santa);
+                GameControl.battle = new SnowballBattle(santa);
+                GameControl.gameType = GameTypes.SNOWBALLBATTLE;
                 break;
             case ELFOFTHEMONTH:
-                new ElfOfTheMonth(santa);
+                GameControl.elfOfTheMonth = new ElfOfTheMonth(santa);
+                GameControl.gameType = GameTypes.ELFOFTHEMONTH;
                 break;
             case PARKOUR:
-                new Parkour(santa);
+                GameControl.parkour = new Parkour(santa);
+                GameControl.gameType = GameTypes.PARKOUR;
                 break;
         }
 
@@ -66,6 +75,28 @@ public class GameControl {
             }
 
         }, 100);
+    }
+
+    public static GameTypes getCurrentGame() {
+        return gameType;
+    }
+
+    public static HashMap<UUID, Integer> getScore() {
+        if (gameType == null) {
+            return null;
+        }
+
+        switch (gameType) {
+            case FINDPRESENTS:
+                return presents.getScore();
+            case SNOWBALLBATTLE:
+                return battle.getScore();
+            case ELFOFTHEMONTH:
+                return elfOfTheMonth.getScore();
+            case PARKOUR:
+                return parkour.getScore();
+        }
+        return null;
     }
 
     public static void endGame() {

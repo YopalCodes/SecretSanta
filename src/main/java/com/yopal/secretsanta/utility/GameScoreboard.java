@@ -25,13 +25,13 @@ public class GameScoreboard {
 
         Team playerScore = board.registerNewTeam("playerScore");
         playerScore.addEntry(ChatColor.GREEN.toString());
-        playerScore.setPrefix(ChatColor.YELLOW + player.getName() + ": ");
+        playerScore.setPrefix(ChatColor.YELLOW + "You (" + player.getName() + "): ");
         playerScore.setSuffix(ChatColor.GRAY + "0");
         obj.getScore(ChatColor.GREEN.toString()).setScore(3);
 
         Team inLead = board.registerNewTeam("inLead");
         inLead.addEntry(ChatColor.RED.toString());
-        inLead.setPrefix(ChatColor.YELLOW + "No One: ");
+        inLead.setPrefix(ChatColor.YELLOW + "In Lead (No One): ");
         inLead.setSuffix(ChatColor.GRAY + "0");
         obj.getScore(ChatColor.RED.toString()).setScore(4);
 
@@ -41,8 +41,14 @@ public class GameScoreboard {
         Score space2 = obj.getScore(" ");
         space2.setScore(6);
 
+        Team time = board.registerNewTeam("time");
+        time.addEntry(ChatColor.WHITE.toString());
+        time.setPrefix(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + "Time: ");
+        time.setSuffix(ChatColor.GRAY + "N/A");
+        obj.getScore(ChatColor.WHITE.toString()).setScore(7);
+
         Score game = obj.getScore(ChatColor.LIGHT_PURPLE.toString() + ChatColor.BOLD + "Game: " + ChatColor.RESET + ChatColor.GRAY + gameType);
-        game.setScore(7);
+        game.setScore(8);
 
         player.setScoreboard(board);
 
@@ -63,11 +69,24 @@ public class GameScoreboard {
         Random random = new Random();
         Player randomPlayer = Bukkit.getPlayer(uuids.get(random.nextInt(uuids.size())));
         for (Player gamePlayer : Bukkit.getOnlinePlayers()) {
-            gamePlayer.getScoreboard().getTeam("inLead").setPrefix(ChatColor.YELLOW + randomPlayer.getName() + ": ");
+            gamePlayer.getScoreboard().getTeam("inLead").setPrefix(ChatColor.YELLOW + "In Lead (" + randomPlayer.getName() + "): ");
             gamePlayer.getScoreboard().getTeam("inLead").setSuffix(ChatColor.GRAY + score.get(randomPlayer.getUniqueId()).toString());
         }
 
 
+
+    }
+
+    public static void updateScoreboard(int seconds) {
+        if (seconds <= 0) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.getScoreboard().getTeam("time").setSuffix(ChatColor.GRAY + "N/A");
+            }
+        } else {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.getScoreboard().getTeam("time").setSuffix(ChatColor.GRAY.toString() + seconds + " second(s)");
+            }
+        }
 
     }
 

@@ -78,6 +78,10 @@ public class FindThePresents {
         }
     }
 
+    public HashMap<UUID, Integer> getScore() {
+        return score;
+    }
+
     public void finish() {
             // wait 30 seconds for next match, teleport players, then reset the map
 

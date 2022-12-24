@@ -57,6 +57,9 @@ public class ElfOfTheMonth {
                 player.removePotionEffect(potionEffect.getType());
             }
 
+            // removing flight
+            player.setAllowFlight(false);
+
             // clearing inventories of snowballs
             player.getInventory().clear();
 
@@ -74,10 +77,12 @@ public class ElfOfTheMonth {
             player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 12100, 3, true, true));
             player.teleport(ConfigManager.returnLocation("ElfOfTheMonthLocation"));
         }
-
         this.countdown = new Countdown(santa, 600, this);
         countdown.start();
+    }
 
+    public HashMap<UUID, Integer> getScore() {
+        return score;
     }
 
     public void newGiftTask(Player player) {

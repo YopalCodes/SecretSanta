@@ -1,5 +1,6 @@
 package com.yopal.secretsanta.managers;
 
+import com.xxmicloxx.NoteBlockAPI.model.FadeType;
 import com.xxmicloxx.NoteBlockAPI.model.Playlist;
 import com.xxmicloxx.NoteBlockAPI.model.Song;
 import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;

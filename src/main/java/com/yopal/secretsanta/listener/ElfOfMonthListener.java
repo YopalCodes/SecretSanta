@@ -135,6 +135,13 @@ public class ElfOfMonthListener implements Listener {
                         player.spawnParticle(Particle.LAVA, player.getLocation(), 7, 0.05, 0.05, 0.05);
 
                         break;
+                    case RAW_COPPER:
+                        player.getInventory().removeItem(new ItemStack(itemType, 1));
+                        player.getInventory().addItem(new ItemStack(Material.COPPER_INGOT, 1));
+                        player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 1, random.nextFloat(1.5f, 2f));
+                        player.spawnParticle(Particle.LAVA, player.getLocation(), 7, 0.05, 0.05, 0.05);
+
+                        break;
                 }
             }
 

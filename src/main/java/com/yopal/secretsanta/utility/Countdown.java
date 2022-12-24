@@ -12,6 +12,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.util.concurrent.TimeUnit;
+
 public class Countdown extends BukkitRunnable {
     private int countdownSeconds;
     private Secretsanta santa;
@@ -29,6 +31,7 @@ public class Countdown extends BukkitRunnable {
         this.presents = presents;
 
     }
+
     public Countdown(Secretsanta santa, int time, SnowballBattle battle) {
         this.santa = santa;
         this.countdownSeconds = time;
@@ -75,7 +78,10 @@ public class Countdown extends BukkitRunnable {
             PlayerInteract.sendToAll(ChatColor.GREEN + "Game ends in " + countdownSeconds + " second" + (countdownSeconds == 1 ? "" : "s") + ".", UtilTypes.MESSAGE);
         }
 
+        GameScoreboard.updateScoreboard(countdownSeconds);
+
         countdownSeconds--;
+
     }
 
     public void start() {

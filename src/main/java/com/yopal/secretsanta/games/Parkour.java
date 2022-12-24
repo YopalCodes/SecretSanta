@@ -65,6 +65,10 @@ public class Parkour {
 
     }
 
+    public HashMap<UUID, Integer> getScore() {
+        return score;
+    }
+
     public void addPoint(Player player, int points) {
         if (!score.containsKey(player.getUniqueId())) {
             score.put(player.getUniqueId(), points);
